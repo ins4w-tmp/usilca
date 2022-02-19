@@ -11,12 +11,31 @@ searchButton.addEventListener("click", async () => {
   });
 });
 
-function scrapCalendar(startDate, endDate) {
-  let pageDateRange = document
-    .querySelector(
-      "#sectionBody > div.con_cuer > div.tabla1 > div:nth-child(2) > div.tabder"
-    )
-    ?.innerText.split(" ");
+const scrapCalendar = (startDate, endDate) => {
+  /*
+  const dateToInfosilFormat = (date) => {
+    let dateElements = date?.split("-");
+    return dateElements[2] + "/" + dateElements[1] + "/" + dateElements[0];
+  };
+  */
+
+  const dateRangeTextToArray = (dates) => {
+    let pageDateRange = document.querySelector(dates)?.innerText.split(" ");
+    return pageDateRange.filter((element) => element.includes("/"));
+  };
+
+  const dateTextToIntsArray = (date) => {
+    let someDate = date.split("/");
+    return someDate.map((number) => parseInt(number));
+  };
+
+  let [pageStartDate, pageEndDate] = dateRangeTextToArray(
+    "#sectionBody > div.con_cuer > div.tabla1 > div:nth-child(2) > div.tabder"
+  );
+
+  console.log(dateTextToIntsArray(pageStartDate));
+  console.log(dateTextToIntsArray(pageEndDate));
+
   /*
   let goLastPageButton = document.querySelector(
     "#sectionBody > div.con_cuer > div.flechas_horario > div.izq"
@@ -24,8 +43,16 @@ function scrapCalendar(startDate, endDate) {
   let goNextPageButton = document.querySelector(
     "#sectionBody > div.con_cuer > div.flechas_horario > div.der"
   );*/
-  let pageStartDate = pageDateRange[1];
-  let pageEndDate = pageDateRange[3];
-  console.log(startDate + " * " + endDate);
-  console.log(pageStartDate + " - " + pageEndDate);
-}
+
+  /*
+  let pageStartDate = intDatesArray(pageDateRange[1]);
+  let pageEndDate = intDatesArray(pageDateRange[3]);
+
+  console.log(pageStartDate);
+  console.log(pageEndDate);
+
+  let popupStartDate = dateToInfosilFormat(startDate);
+  let popupEndDate = dateToInfosilFormat(endDate);
+
+  */
+};
