@@ -1,17 +1,17 @@
-const startDate = document.getElementById("start-date")?.value;
-const endDate = document.getElementById("end-date");
 const searchButton = document.getElementById("search-button");
 
-searchButton.addEventListener("click", async (startDate, endDate) => {
+searchButton.addEventListener("click", async () => {
+  const startDate = document.querySelector("#start-date")?.value;
+  const endDate = document.querySelector("#end-date")?.value;
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    args: [startDate],
-    function: scrapCalendar,
+    args: [startDate, endDate],
+    func: scrapCalendar,
   });
 });
 
-function scrapCalendar(startDate) {
+function scrapCalendar(startDate, endDate) {
   let pageDateRange = document
     .querySelector(
       "#sectionBody > div.con_cuer > div.tabla1 > div:nth-child(2) > div.tabder"
@@ -26,6 +26,6 @@ function scrapCalendar(startDate) {
   );*/
   let pageStartDate = pageDateRange[1];
   let pageEndDate = pageDateRange[3];
-  console.log(startDate);
+  console.log(startDate + " * " + endDate);
   console.log(pageStartDate + " - " + pageEndDate);
 }
