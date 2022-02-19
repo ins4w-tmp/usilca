@@ -1,16 +1,10 @@
 {
-  "name": "Usical",
-  "description": "Extensión de Chrome para exportar tu calendario USIL como un documento CSV.",
+  "name": "usical",
+  "description": "chrome extension for exporting infosil calendar as a calendar file",
   "version": "1.0",
   "manifest_version": 3,
   "action": {
-    "default_popup": "index.html",
-    "default_icon": {
-      "16": "logo-usil-bgnt.png",
-      "32": "logo-usil-bgnt.png",
-      "48": "logo-usil-bgnt.png",
-      "128": "logo-usil-bgnt.png"
-    }
+    "default_popup": "index.html"
   },
   "permissions": ["activeTab", "scripting"]
 }
