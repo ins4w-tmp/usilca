@@ -39,21 +39,27 @@ const scrapCalendar = (popupStartDate, popupEndDate) => {
   let normalizedPopupStartDate = dateTextToDate(popupStartDate);
   let normalizedPopupEndDate = dateTextToDate(popupEndDate);
 
-  console.log(normalizedPageEndDate > normalizedPageStartDate);
-
-  /*
-  console.log(normalizedPageStartDate);
-  console.log(normalizedPageEndDate);
-  console.log(normalizedPopupStartDate);
-  console.log(normalizedPopupEndDate);
-  */
-
-  /*
   let goLastPageButton = document.querySelector(
     "#sectionBody > div.con_cuer > div.flechas_horario > div.izq"
   );
   let goNextPageButton = document.querySelector(
     "#sectionBody > div.con_cuer > div.flechas_horario > div.der"
   );
+
+while (normalized <= nor)
+
+  if (normalizedPopupStartDate < normalizedPageStartDate) {
+    goLastPageButton.click();
+  }
+
+  if (normalizedPopupStartDate > normalizedPageStartDate) {
+    goNextPageButton.click();
+  }
+
+  /*
+  console.log(normalizedPageStartDate);
+  console.log(normalizedPageEndDate);
+  console.log(normalizedPopupStartDate);
+  console.log(normalizedPopupEndDate);
   */
 };
